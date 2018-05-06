@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include <iostream>
 #include <regex>
 #include <string>
@@ -1592,4 +1591,3 @@ int main() {
 	SQL_menu();
 	return 0;
 }
->>>>>>> c012730fa547250f165c7dcb72b8c4d551040691
