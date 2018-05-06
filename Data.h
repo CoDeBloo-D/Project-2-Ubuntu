@@ -4,14 +4,14 @@
 using namespace std;
 
 struct Table {
-	std::vector<string>line;	//一行的内容，第一行是表头
-	Table *next;	//下一行
+	std::vector<string>line;
+	Table *next;
 };
 
 struct Record {
-	string tablename;	//表格名
-	string filename;	//表格所在文件名
-	Record *next;	//下一条记录
+	string tablename;
+	string filename;
+	Record *next;
 };
 
 extern Record *Recordhead;
