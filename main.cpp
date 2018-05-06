@@ -6,9 +6,7 @@
 #include "Data.h"
 #include "Tableop.h"
 #include "Recordop.h"
-#include "File.h"
-#define strcpy_s strcpy
-#define strcat_s strcat
+#include "File.h" 
  
 using namespace std;
 
@@ -123,7 +121,7 @@ void SQL_menu() {
 				string title = cmd.substr(ch1 + 1, ch2 - ch1 - 1);
 				//cout << title << endl;
 				char cmd_array[200] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				char tablename[30] = { '\0' };
 				char filename[30] = { '\0' };
 				for (int i = 0, tablepos = cmd.find("TABLE") + 6; cmd_array[tablepos] != ' '&&i < 200; i++, tablepos++)
@@ -134,8 +132,8 @@ void SQL_menu() {
 				//cout << filename << endl;
 
 				char test[40] = { '\0' };
-				strcpy_s(test, tablename);
-				strcat_s(test, ".txt");
+				strcpy(test, tablename);
+				strcat(test, ".txt");
 
 				if (strcmp(test, filename) != 0) {
 					mode = 0;
@@ -146,7 +144,7 @@ void SQL_menu() {
 				if (Recordhead != NULL) {
 					for (Record *p = Recordhead; p != NULL; p = p->next) {
 						char ptablename[30] = { '\0' };
-						strcpy_s(ptablename, p->tablename.c_str());
+						strcpy(ptablename, p->tablename.c_str());
 						if (strcmp(ptablename, tablename) == 0) {
 							cout << "Invalid Tablename!Please Retry!" << endl;
 							mode = 0;
@@ -171,7 +169,7 @@ void SQL_menu() {
 
 			else if (mode == 2) {
 				char cmd_array[200] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				char tablename[30] = { '\0' };
 				char filename[30] = { '\0' };
 				for (int i = 0, tablepos = cmd.find("TABLE") + 6; cmd_array[tablepos] != ' '&&i < 200; i++, tablepos++)
@@ -182,8 +180,8 @@ void SQL_menu() {
 				//cout << filename << endl;
 
 				char test[40] = { '\0' };
-				strcpy_s(test, tablename);
-				strcat_s(test, ".txt");
+				strcpy(test, tablename);
+				strcat(test, ".txt");
 				if (strcmp(test, filename) != 0) {
 					mode = 0;
 					cout << "Warning!Tablename doesn't match with filename!Please retry!" << endl;
@@ -193,7 +191,7 @@ void SQL_menu() {
 				if (Recordhead != NULL) {
 					for (Record *p = Recordhead; p != NULL; p = p->next) {
 						char ptablename[40] = { '\0' };
-						strcpy_s(ptablename, p->tablename.c_str());
+						strcpy(ptablename, p->tablename.c_str());
 						if (strcmp(ptablename, tablename) == 0) {
 							cout << "Invalid Tablename!Please Retry!" << endl;
 							mode = 0;
@@ -218,7 +216,7 @@ void SQL_menu() {
 			else if (mode == 3) {
 				char tablename_array[30] = { '\0' };
 				char cmd_array[200] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				for (int i = 0, tablepos = cmd.find("TABLE") + 6; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				string tablename = tablename_array;
@@ -239,13 +237,13 @@ void SQL_menu() {
 				std::size_t ch2 = cmd.find(")", 0);
 				string content = cmd.substr(ch1 + 1, ch2 - ch1 - 1);
 				char cmd_array[200] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				char tablename[30] = { '\0' };
 				char filename[30] = { '\0' };
 				for (int i = 0, tablepos = cmd.find("INTO") + 5; cmd_array[tablepos] != ' '&&i < 200; i++, tablepos++)
 					tablename[i] = cmd_array[tablepos];
-				strcpy_s(filename, tablename);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename);
+				strcat(filename, ".txt");
 
 				Table *Tablehead = new Table;
 				Tablehead = NULL;
@@ -268,13 +266,13 @@ void SQL_menu() {
 				string content = cmd.substr(ch3 + 1, ch4 - ch3 - 1);
 				//cout << content << endl;
 				char cmd_array[200] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				char tablename[30] = { '\0' };
 				char filename[30] = { '\0' };
 				for (int i = 0, tablepos = cmd.find("INTO") + 5; cmd_array[tablepos] != ' '&&i < 200; i++, tablepos++)
 					tablename[i] = cmd_array[tablepos];
-				strcpy_s(filename, tablename);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename);
+				strcat(filename, ".txt");
 
 				Table *Tablehead = new Table;
 				Tablehead = NULL;
@@ -292,13 +290,13 @@ void SQL_menu() {
 				char cmd_array[200] = { '\0' };
 				char limit_array[30]= { '\0' };
 				char value_array[30]= { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 
 				for (int i = 0, tablepos = cmd.find("FROM") + 5; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 
 				for (int i = 0,limitpos=cmd.find("WHERE")+6; cmd_array[limitpos] != ' '&&cmd_array[limitpos] != '='&&i < 200; i++, limitpos++)
 					limit_array[i] = cmd_array[limitpos];
@@ -321,12 +319,12 @@ void SQL_menu() {
 			else if (mode == 8) {
 				char tablename_array[30] = { '\0' };
 				char cmd_array[200] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				for (int i = 0, tablepos = cmd.find("FROM") + 5; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 				Table *Tablehead = new Table;
 				Tablehead = NULL;
 				fp.readTable(Tablehead, filename);
@@ -342,13 +340,13 @@ void SQL_menu() {
 				char tablename_array[30] = { '\0' };
 				char cmd_array[1024] = { '\0' };
 				char raw_array[1024] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 
 				for (int i = 0, tablepos = cmd.find("UPDATE") + 7; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 1024; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 
 				for (int i = 0, rawpos = cmd.find("SET") + 4; cmd_array[rawpos] != '\0 '&&i < 1024; i++, rawpos++)
 					raw_array[i] = cmd_array[rawpos];
@@ -384,13 +382,13 @@ void SQL_menu() {
 				char raw_array[1024] = { '\0' };
 				char limit_array[30] = { '\0' };
 				char value_array[30] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 
 				for (int i = 0, tablepos = cmd.find("UPDATE") + 7; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 1024; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 
 				for (int i = 0, rawpos = cmd.find("SET") + 4; cmd_array[rawpos] != ' '&&i < 1024; i++, rawpos++)
 					raw_array[i] = cmd_array[rawpos];
@@ -433,14 +431,14 @@ void SQL_menu() {
 				char tablename_array[30] = { '\0' };
 				char resultfile_array[30] = { '\0' };
 				char cmd_array[200] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				for (int i = 0, tablepos = cmd.find("FROM") + 5; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				for (int i = 0, resultpos = cmd.find("TO") + 3; cmd_array[resultpos] != ' '&&cmd_array[resultpos] != '\0'&&i < 200; i++, resultpos++)
 					resultfile_array[i] = cmd_array[resultpos];
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 				if (strcmp(filename, resultfile_array) == 0) {
 					cout << "Invalid file name" << endl;
 					mode = 0;
@@ -459,12 +457,12 @@ void SQL_menu() {
 			else if (mode == 12) {
 				char tablename_array[30] = { '\0' };
 				char cmd_array[200] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				for (int i = 0, tablepos = cmd.find("FROM") + 5; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 				Table *Tablehead = new Table;
 				Tablehead = NULL;
 				fp.readTable(Tablehead,filename);
@@ -479,7 +477,7 @@ void SQL_menu() {
 				char title_array[30] = { '\0' };
 				char resultfile_array[30] = { '\0' };
 				char cmd_array[200] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				for (int i = 0, tablepos = cmd.find("FROM") + 5; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				for (int i = 0, titlepos = cmd.find("DISTINCT") + 9; cmd_array[titlepos] != ' '&&cmd_array[titlepos] != '\0'&&i < 200; i++, titlepos++)
@@ -489,8 +487,8 @@ void SQL_menu() {
 					resultfile_array[i] = cmd_array[resultpos];
 
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 				if (strcmp(filename, resultfile_array) == 0) {
 					cout << "Invalid file name" << endl;
 					mode = 0;
@@ -510,7 +508,7 @@ void SQL_menu() {
 				char tablename_array[30] = { '\0' };
 				char title_array[30] = { '\0' };
 				char cmd_array[200] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				for (int i = 0, tablepos = cmd.find("FROM") + 5; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				for (int i = 0, titlepos = cmd.find("DISTINCT") + 9; cmd_array[titlepos] != ' '&&cmd_array[titlepos] != '\0'&&i < 200; i++, titlepos++)
@@ -518,8 +516,8 @@ void SQL_menu() {
 
 				string limit = title_array;
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 				Table *Tablehead = new Table;
 				Tablehead = NULL;
 				fp.readTable(Tablehead, filename);
@@ -534,7 +532,7 @@ void SQL_menu() {
 				char cmd_array[200] = { '\0' };
 				char titles_array[100] = { '\0' };
 				char resultfile_array[30] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				for (int i = 0, tablepos = cmd.find("FROM") + 5; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				for (int i = 0, titlepos = cmd.find("SELECT") + 7; cmd_array[titlepos] != ' '&&i < 200; i++, titlepos++)
@@ -543,8 +541,8 @@ void SQL_menu() {
 				for (int i = 0, resultpos = cmd.find("TO") + 3; cmd_array[resultpos] != ' '&&cmd_array[resultpos] != '\0'&&i < 200; i++, resultpos++)
 					resultfile_array[i] = cmd_array[resultpos];
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 				if (strcmp(filename, resultfile_array) == 0) {
 					cout << "Invalid file name" << endl;
 					mode = 0;
@@ -564,7 +562,7 @@ void SQL_menu() {
 				char tablename_array[30] = { '\0' };
 				char cmd_array[200] = { '\0' };
 				char titles_array[100] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				for (int i = 0, tablepos = cmd.find("FROM") + 5; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				for (int i = 0, titlepos = cmd.find("SELECT") + 7; cmd_array[titlepos] != ' '&&i < 200; i++, titlepos++)
@@ -572,8 +570,8 @@ void SQL_menu() {
 
 				string titles = titles_array;
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 				Table *Tablehead = new Table;
 				Tablehead = NULL;
 				fp.readTable(Tablehead, filename);
@@ -588,7 +586,7 @@ void SQL_menu() {
 				char condition_array[30] = { '\0' };
 				char resultfile_array[30] = { '\0' };
 				char cmd_array[200] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				for (int i = 0, tablepos = cmd.find("FROM") + 5; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				for (int i = 0, conditionpos = cmd.find("BY") + 3; cmd_array[conditionpos] != ' '&&cmd_array[conditionpos] != '\0'&&i < 200; i++, conditionpos++)
@@ -597,8 +595,8 @@ void SQL_menu() {
 				for (int i = 0, resultpos = cmd.find("TO") + 3; cmd_array[resultpos] != ' '&&cmd_array[resultpos] != '\0'&&i < 200; i++, resultpos++)
 					resultfile_array[i] = cmd_array[resultpos];
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 				if (strcmp(filename, resultfile_array) == 0) {
 					cout << "Invalid file name" << endl;
 					mode = 0;
@@ -624,15 +622,15 @@ void SQL_menu() {
 				char tablename_array[30] = { '\0' };
 				char condition_array[30] = { '\0' };
 				char cmd_array[200] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				for (int i = 0, tablepos = cmd.find("FROM") + 5; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				for (int i = 0, conditionpos = cmd.find("BY") + 3; cmd_array[conditionpos] != ' '&&cmd_array[conditionpos] != '\0'&&i < 200; i++, conditionpos++)
 					condition_array[i] = cmd_array[conditionpos];
 				string condition = condition_array;
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 				int type = -1;
 				if (cmd.find("ASC") != string::npos)
 					type = 1;
@@ -654,7 +652,7 @@ void SQL_menu() {
 				char limit_array[30] = { '\0' };
 				char value_array[30] = { '\0' };
 				char resultfile_array[30] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				for (int i = 0, tablepos = cmd.find("FROM") + 5; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				for (int i = 0, limitpos = cmd.find("WHERE") + 6; cmd_array[limitpos] != ' '&&cmd_array[limitpos] != '='&&i < 200; i++, limitpos++)
@@ -667,8 +665,8 @@ void SQL_menu() {
 				for (int i = 0, resultpos = cmd.find("TO") + 3; cmd_array[resultpos] != ' '&&cmd_array[resultpos] != '\0'&&i < 200; i++, resultpos++)
 					resultfile_array[i] = cmd_array[resultpos];
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 				if (strcmp(filename, resultfile_array) == 0) {
 					cout << "Invalid file name" << endl;
 					mode = 0;
@@ -689,7 +687,7 @@ void SQL_menu() {
 				char cmd_array[200] = { '\0' };
 				char limit_array[30] = { '\0' };
 				char value_array[30] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				for (int i = 0, tablepos = cmd.find("FROM") + 5; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				for (int i = 0, limitpos = cmd.find("WHERE") + 6; cmd_array[limitpos] != ' '&&cmd_array[limitpos] != '='&&i < 200; i++, limitpos++)
@@ -700,8 +698,8 @@ void SQL_menu() {
 				string value = value_array;
 				//cout << limit << " " << value << endl;
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 				Table *Tablehead = new Table;
 				Tablehead = NULL;
 				fp.readTable(Tablehead, filename);
@@ -718,7 +716,7 @@ void SQL_menu() {
 				char limit_array[30] = { '\0' };
 				char value_array[30] = { '\0' };
 				char resultfile_array[30] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				for (int i = 0, tablepos = cmd.find("FROM") + 5; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				for (int i = 0, titlepos = cmd.find("SELECT") + 7; cmd_array[titlepos] != ' '&&i < 200; i++, titlepos++)
@@ -735,8 +733,8 @@ void SQL_menu() {
 				for (int i = 0, resultpos = cmd.find("TO") + 3; cmd_array[resultpos] != ' '&&cmd_array[resultpos] != '\0'&&i < 200; i++, resultpos++)
 					resultfile_array[i] = cmd_array[resultpos];
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 				if (strcmp(filename, resultfile_array) == 0) {
 					cout << "Invalid file name" << endl;
 					mode = 0;
@@ -759,7 +757,7 @@ void SQL_menu() {
 				char titles_array[100] = { '\0' };
 				char limit_array[30] = { '\0' };
 				char value_array[30] = { '\0' };
-				strcpy_s(cmd_array, cmd.c_str());
+				strcpy(cmd_array, cmd.c_str());
 				for (int i = 0, tablepos = cmd.find("FROM") + 5; cmd_array[tablepos] != ' '&&cmd_array[tablepos] != '\0'&&i < 200; i++, tablepos++)
 					tablename_array[i] = cmd_array[tablepos];
 				for (int i = 0, titlepos = cmd.find("SELECT") + 7; cmd_array[titlepos] != ' '&&i < 200; i++, titlepos++)
@@ -775,8 +773,8 @@ void SQL_menu() {
 				//cout << limit << " " << value << endl;
 
 				char filename[50] = { '\0' };
-				strcpy_s(filename, tablename_array);
-				strcat_s(filename, ".txt");
+				strcpy(filename, tablename_array);
+				strcat(filename, ".txt");
 				Table *Tablehead = new Table;
 				Tablehead = NULL;
 				fp.readTable(Tablehead, filename);
