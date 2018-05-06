@@ -19,7 +19,7 @@ void Recordop::listTable (Record *h){
 		Table *tmp = new Table;
 		tmp = NULL;
 		char filename[30] = { '\0' };
-		strcpy_s(filename, p->filename.c_str());
+		strcpy(filename, p->filename.c_str());
 		readTable(tmp,filename);
 		int row_num = 0;
 		std::vector<string>titles(tmp->line);
