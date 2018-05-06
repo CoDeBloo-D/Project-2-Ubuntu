@@ -20,29 +20,29 @@ Recordop ropt;
 
 
 int cmd_match(string cmd) {
-	std::regex pattern_create1("(CREATE)(\\s+)(TABLE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(\\(.*\\))(\\s+)(TO)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
-	std::regex pattern_create2("(CREATE)(\\s+)(TABLE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
-	std::regex pattern_drop("(DROP)(\\s+)(TABLE)(\\s+)((?:[a-z][a-z0-9_]*))");
-	std::regex pattern_tablelist("(TABLE)(\\s+)(LIST)");
-	std::regex pattern_insert1("(INSERT)(\\s+)(INTO)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(VALUES)(\\s+)(\\(.*\\))");
-	std::regex pattern_insert2("(INSERT)(\\s+)(INTO)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(\\(.*\\))(\\s+)(VALUES)(\\s+)(\\(.*\\))");
-	std::regex pattern_delete1("(DELETE)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(WHERE)(\\s+)((?:[^]*))(\\s+)(=)(\\s+)((?:[^]*))");
-	std::regex pattern_delete2("(DELETE)(\\s+)(\\*)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))");
-	std::regex pattern_update1("(UPDATE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(SET)(\\s+)((?:[a-z][a-z0-9_,=]*))");
-	std::regex pattern_update2("(UPDATE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(SET)(\\s+)((?:[a-z][a-z0-9_,=]*))(\\s+)(WHERE)(\\s+)((?:[a-z][a-z0-9_,=]*))");
-	std::regex pattern_select1("(SELECT)(\\s+)(\\*)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(TO)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
-	std::regex pattern_select2("(SELECT)(\\s+)(\\*)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))");
-	std::regex pattern_select3("(SELECT)(\\s+)(DISTINCT)(\\s+)((?:[^]*))(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(TO)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
-	std::regex pattern_select4("(SELECT)(\\s+)(DISTINCT)(\\s+)((?:[^]*))(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))");
-	std::regex pattern_select5("(SELECT)(\\s+)((?:[a-z][a-z0-9_,=]*))(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(TO)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
-	std::regex pattern_select6("(SELECT)(\\s+)((?:[a-z][a-z0-9_,=]*))(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))");
-	std::regex pattern_select7("(SELECT)(\\s+)(\\*)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(ORDER)(\\s+)(BY)(\\s+)((?:[^]*))(\\s+)(ASC|DESC)(\\s+)(TO)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
-	std::regex pattern_select8("(SELECT)(\\s+)(\\*)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(ORDER)(\\s+)(BY)(\\s+)((?:[^]*))(\\s+)(ASC|DESC)");
-	std::regex pattern_select9("(SELECT)(\\s+)(\\*)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(WHERE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(=)(\\s+)((?:[^]*))(\\s+)(TO)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
-	std::regex pattern_select10("(SELECT)(\\s+)(\\*)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(WHERE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(=)(\\s+)((?:[^]*))");
-	std::regex pattern_select11("(SELECT)(\\s+)((?:[^]*))(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(WHERE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(=)(\\s+)((?:[^]*))(\\s+)(TO)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
-	std::regex pattern_select12("(SELECT)(\\s+)((?:[^]*))(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(WHERE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(=)(\\s+)((?:[^]*))");
-	std::regex pattern_quit("(quit)");
+	regex pattern_create1("(CREATE)(\\s+)(TABLE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(\\(.*\\))(\\s+)(TO)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
+	regex pattern_create2("(CREATE)(\\s+)(TABLE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
+	regex pattern_drop("(DROP)(\\s+)(TABLE)(\\s+)((?:[a-z][a-z0-9_]*))");
+	regex pattern_tablelist("(TABLE)(\\s+)(LIST)");
+	regex pattern_insert1("(INSERT)(\\s+)(INTO)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(VALUES)(\\s+)(\\(.*\\))");
+	regex pattern_insert2("(INSERT)(\\s+)(INTO)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(\\(.*\\))(\\s+)(VALUES)(\\s+)(\\(.*\\))");
+	regex pattern_delete1("(DELETE)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(WHERE)(\\s+)((?:[^]*))(\\s+)(=)(\\s+)((?:[^]*))");
+	regex pattern_delete2("(DELETE)(\\s+)(\\*)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))");
+	regex pattern_update1("(UPDATE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(SET)(\\s+)((?:[a-z][a-z0-9_,=]*))");
+	regex pattern_update2("(UPDATE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(SET)(\\s+)((?:[a-z][a-z0-9_,=]*))(\\s+)(WHERE)(\\s+)((?:[a-z][a-z0-9_,=]*))");
+	regex pattern_select1("(SELECT)(\\s+)(\\*)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(TO)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
+	regex pattern_select2("(SELECT)(\\s+)(\\*)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))");
+	regex pattern_select3("(SELECT)(\\s+)(DISTINCT)(\\s+)((?:[^]*))(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(TO)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
+	regex pattern_select4("(SELECT)(\\s+)(DISTINCT)(\\s+)((?:[^]*))(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))");
+	regex pattern_select5("(SELECT)(\\s+)((?:[a-z][a-z0-9_,=]*))(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(TO)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
+	regex pattern_select6("(SELECT)(\\s+)((?:[a-z][a-z0-9_,=]*))(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))");
+	regex pattern_select7("(SELECT)(\\s+)(\\*)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(ORDER)(\\s+)(BY)(\\s+)((?:[^]*))(\\s+)(ASC|DESC)(\\s+)(TO)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
+	regex pattern_select8("(SELECT)(\\s+)(\\*)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(ORDER)(\\s+)(BY)(\\s+)((?:[^]*))(\\s+)(ASC|DESC)");
+	regex pattern_select9("(SELECT)(\\s+)(\\*)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(WHERE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(=)(\\s+)((?:[^]*))(\\s+)(TO)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
+	regex pattern_select10("(SELECT)(\\s+)(\\*)(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(WHERE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(=)(\\s+)((?:[^]*))");
+	regex pattern_select11("(SELECT)(\\s+)((?:[^]*))(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(WHERE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(=)(\\s+)((?:[^]*))(\\s+)(TO)(\\s+)((?:[a-z][a-z0-9_]*))(\\.)(txt)");
+	regex pattern_select12("(SELECT)(\\s+)((?:[^]*))(\\s+)(FROM)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(WHERE)(\\s+)((?:[a-z][a-z0-9_]*))(\\s+)(=)(\\s+)((?:[^]*))");
+	regex pattern_quit("(quit)");
 
 	int mode = 0;
 
