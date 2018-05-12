@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include <vector>
-#include "Data.h"
-#include "Recordop.h"
+#include "Heads.h"
 
 using namespace std;
 
@@ -17,28 +17,31 @@ void Recordop::listTable (Record *h){
 	for (Record *p = h; p != NULL; p = p->next) {
 		cout << p->tablename << ":";
 		Table *tmp = new Table;
-		tmp = NULL;
-		char filename[30] = { '\0' };
+		tmp=NULL;
+		char filename[30] = {'\0'};
 		strcpy(filename, p->filename.c_str());
-		readTable(tmp,filename);
-		int row_num = 0;
-		std::vector<string>titles(tmp->line);
-		size_t col_num = titles.size();
-		while (tmp->next!= NULL) {
-			tmp = tmp->next;
-			row_num++;
+		strcat(filename,"\0");
+		File f; 
+		if(f.readTable(tmp,filename)) {
+			int row_num = 0;
+			std::vector<string>titles(tmp->line);
+			size_t col_num = titles.size();
+			while (tmp->next!= NULL) {
+				tmp = tmp->next;
+				row_num++;
+			}
+			cout << "(" << col_num << "," << row_num<< ")";
+			cout << "[";
+			for (vector<string>::iterator iter = titles.begin(); iter!=titles.end(); iter++) {
+				if (iter + 1 != titles.end())
+					cout << (*iter) << ",";
+				else
+					cout << (*iter) << "]";
+			}
+			delete tmp;
+			cout << endl;
+			}
 		}
-		cout << "(" << col_num << "," << row_num<< ")";
-		cout << "[";
-		for (vector<string>::iterator iter = titles.begin(); iter!=titles.end(); iter++) {
-			if (iter + 1 != titles.end())
-				cout << (*iter) << ",";
-			else
-				cout << (*iter) << "]";
-		}
-		delete tmp;
-		cout << endl;
-	}
 	return;
 }
 

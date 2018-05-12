@@ -4,14 +4,13 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
-#include "Data.h"
-#include "File.h"
+#include "Heads.h"
 
-void File::readTable(Table *&h,char *filename) {
+bool File::readTable(Table *&h,char *filename) {
 	std::ifstream fin(filename, std::ios::in);
 	if (!fin) {
 		cout << "File open error!\n";
-		return;
+		return false;
 	}
 
 	char buf[1024] = { '\0' };
@@ -38,7 +37,7 @@ void File::readTable(Table *&h,char *filename) {
 
 	fin.clear();
 	fin.close();
-	return;
+	return true;
 }
 
 void File::writeTable(Table *h,char *filename) {
@@ -57,8 +56,12 @@ void File::writeTable(Table *h,char *filename) {
 	}
 
 	for (Table *p = h; p != NULL; p = p->next) {
-		for (vector<string>::iterator iter = p->line.begin(); iter != p->line.end(); iter++)
-			fout << (*iter)<<" ";
+		for (vector<string>::iterator iter = p->line.begin(); iter != p->line.end(); iter++) { 
+			if(iter+1!=p->line.end()) 
+				fout << (*iter)<<" ";
+			else
+				fout << (*iter); 
+		} 
 		fout << endl;
 	}
 	fout.close();
@@ -82,7 +85,7 @@ void File::readRecord(Record *&h) {
 		tmp->next = NULL;
 		while (getline(words,cell,' ')) {
 			tmp->tablename=cell;
-			getline(words, cell, ' ');
+			getline(words,cell,' ');
 			tmp->filename=cell;
 		}
 

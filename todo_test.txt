@@ -1,0 +1,19 @@
+CREATE TABLE student FROM student.txt
+CREATE TABLE lecture FROM lecture.txt
+CREATE TABLE xuanke (StudentID,StudentName,CourseID,CourseName) TO xuanke.txt
+TABLE LIST
+SELECT studentID,Names FROM student
+SELECT CourseID,CourseName FROM lecture
+INSERT INTO xuanke VALUES (1733001,liang,00360070,Classic_literature_of_Russia)
+INSERT INTO xuanke VALUES (1733005,zhang,UNk,Discrete_Mathematics)
+UPDATE xuanke SET CourseName=C++_Programming WHERE StudentName=liang
+SELECT * FROM xuanke
+SELECT DISTINCT StudentName FROM xuanke
+SELECT * FROM student ORDER BY studentID DESC
+SELECT * FROM xuanke WHERE StudentName=zhang
+SELECT CourseID,CourseName FROM lecture TO coursename.txt
+DELETE FROM xuanke WHERE CourseName=C++_Programming
+DROP TABLE student
+DROP TABLE lecture
+TABLE LIST
+
